@@ -80,6 +80,7 @@
     
     
       <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Quick start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../generated_sphinx_gallery/index.html">Gallery of examples</a></li>
 </ul>
@@ -116,47 +117,61 @@
 
 
 <div class="viewcode-block" id="BlockchainWebsocketClient"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient">[docs]</a><span class="k">class</span> <span class="nc">BlockchainWebsocketClient</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;High level API to interact with Blockchain Exchange</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    channel_manager : ChannelManager</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">channel_manager</span> <span class="o">=</span> <span class="n">ChannelManager</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_subscribe_to_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">channel_params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generic interface to subscribe to channels&quot;&quot;&quot;</span>
         <span class="n">channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_channel</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">channel_params</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">channel</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">channel</span><span class="o">.</span><span class="n">is_subscribed</span><span class="p">:</span>
             <span class="n">channel</span><span class="o">.</span><span class="n">subscribe</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_unsubscribe_from_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">channel_params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generic interface to unsubscribe from channels&quot;&quot;&quot;</span>
         <span class="n">channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_channel</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">channel_params</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">channel</span> <span class="ow">and</span> <span class="n">channel</span><span class="o">.</span><span class="n">is_subscribed</span><span class="p">:</span>
             <span class="n">channel</span><span class="o">.</span><span class="n">unsubscribe</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_is_authenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Check if client can connect to authenticated channels&quot;&quot;&quot;</span>
         <span class="n">channel</span><span class="p">:</span> <span class="n">AuthChannel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_channel</span><span class="p">(</span><span class="s2">&quot;auth&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">channel</span><span class="o">.</span><span class="n">is_authenticated</span>
 
     <span class="k">def</span> <span class="nf">_auth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to `auth &lt;https://exchange.blockchain.com/api/#authenticated-channels&gt;`_ channel&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subscribe_to_channel</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;auth&quot;</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">subscribe_to_heartbeat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.subscribe_to_heartbeat"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.subscribe_to_heartbeat">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_to_heartbeat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to `heartbeat &lt;https://exchange.blockchain.com/api/#heartbeat&gt;`_ channel&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subscribe_to_channel</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;heartbeat&quot;</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">subscribe_to_orderbook_l2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.subscribe_to_orderbook_l2"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.subscribe_to_orderbook_l2">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_to_orderbook_l2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to `L2 order book &lt;https://exchange.blockchain.com/api/#l2-order-book&gt;`_ channel&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subscribe_to_channel</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>
             <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">subscribe_to_orderbook_l3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.subscribe_to_orderbook_l3"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.subscribe_to_orderbook_l3">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_to_orderbook_l3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to `L3 order book &lt;https://exchange.blockchain.com/api/#l3-order-book&gt;`_ channel&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subscribe_to_channel</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;l3&quot;</span><span class="p">,</span>
             <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">subscribe_to_prices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">granularity</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.subscribe_to_prices"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.subscribe_to_prices">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_to_prices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">granularity</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to `prices &lt;https://exchange.blockchain.com/api/#prices&gt;`_ channel&quot;&quot;&quot;</span>
         <span class="n">supported_granularities</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">21600</span><span class="p">,</span> <span class="mi">86400</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">granularity</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">supported_granularities</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Granularity &#39;</span><span class="si">{</span><span class="n">granularity</span><span class="si">}</span><span class="s2">&#39; is not supported. Should be one of </span><span class="si">{</span><span class="n">supported_granularities</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
@@ -165,29 +180,33 @@
                 <span class="n">name</span><span class="o">=</span><span class="s2">&quot;prices&quot;</span><span class="p">,</span>
                 <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
                 <span class="n">granularity</span><span class="o">=</span><span class="n">granularity</span><span class="p">,</span>
-            <span class="p">)</span>
+            <span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">subscribe_to_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.subscribe_to_symbols"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.subscribe_to_symbols">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_to_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to `symbols &lt;https://exchange.blockchain.com/api/#symbols&gt;`_ channel&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subscribe_to_channel</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;symbols&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">subscribe_to_ticker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.subscribe_to_ticker"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.subscribe_to_ticker">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_to_ticker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to `ticker &lt;https://exchange.blockchain.com/api/#ticker&gt;`_ channel&quot;&quot;&quot;</span>
         <span class="n">channel_params</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;symbol&quot;</span><span class="p">:</span> <span class="n">symbol</span>
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subscribe_to_channel</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ticker&quot;</span><span class="p">,</span>
             <span class="o">**</span><span class="n">channel_params</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">subscribe_to_trades</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.subscribe_to_trades"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.subscribe_to_trades">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_to_trades</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to `trades &lt;https://exchange.blockchain.com/api/#trades&gt;`_ channel&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subscribe_to_channel</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;trades&quot;</span><span class="p">,</span>
             <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">subscribe_to_trading</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.subscribe_to_trading"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.subscribe_to_trading">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_to_trading</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to `trading &lt;https://exchange.blockchain.com/api/#trading&gt;`_ channel&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_auth</span><span class="p">()</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_authenticated</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Waiting for authentication&quot;</span><span class="p">)</span>
@@ -195,9 +214,10 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_subscribe_to_channel</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;trading&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">subscribe_to_balances</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.subscribe_to_balances"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.subscribe_to_balances">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_to_balances</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to `balances &lt;https://exchange.blockchain.com/api/#balances&gt;`_ channel&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_auth</span><span class="p">()</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_authenticated</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Waiting for authentication&quot;</span><span class="p">)</span>
@@ -205,7 +225,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_subscribe_to_channel</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;balances&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">available_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
@@ -218,7 +238,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel_manager</span><span class="o">.</span><span class="n">get_all_channels</span><span class="p">()</span>
 
 <div class="viewcode-block" id="BlockchainWebsocketClient.get_channel"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.get_channel">[docs]</a>    <span class="k">def</span> <span class="nf">get_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">channel_params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Channel</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Get a channel of interest</span>
+        <span class="sd">&quot;&quot;&quot;Get connection to a channel of interest</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -244,7 +264,12 @@
         <span class="k">return</span> <span class="n">channel</span><span class="o">.</span><span class="n">last_heartbeat</span></div>
 
 <div class="viewcode-block" id="BlockchainWebsocketClient.get_trading_channel"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.get_trading_channel">[docs]</a>    <span class="k">def</span> <span class="nf">get_trading_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TradingChannel</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Get connection to trading channel&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Get connection to `trading &lt;https://exchange.blockchain.com/api/#trading&gt;`_ channel</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        channel : TradingChannel</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_channel</span><span class="p">(</span><span class="s2">&quot;trading&quot;</span><span class="p">)</span>
 
         <span class="k">while</span> <span class="ow">not</span> <span class="n">channel</span><span class="o">.</span><span class="n">is_subscribed</span><span class="p">:</span>
@@ -253,7 +278,17 @@
         <span class="k">return</span> <span class="n">channel</span></div>
 
 <div class="viewcode-block" id="BlockchainWebsocketClient.get_prices_channel"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.get_prices_channel">[docs]</a>    <span class="k">def</span> <span class="nf">get_prices_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">granularity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PricesChannel</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Get connection to trading channel&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Get connection to `prices &lt;https://exchange.blockchain.com/api/#prices&gt;`_ channel</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        symbol</span>
+<span class="sd">        granularity</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        channel : PricesChannel</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_channel</span><span class="p">(</span>
             <span class="s2">&quot;prices&quot;</span><span class="p">,</span>
             <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
@@ -265,14 +300,30 @@
             <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;You need to be subscribed to &#39;prices&#39; channel before you can communicate with it&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">channel</span></div>
 
-    <span class="k">def</span> <span class="nf">create_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">Order</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.create_order"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.create_order">[docs]</a>    <span class="k">def</span> <span class="nf">create_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">Order</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create generic order</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        order : Order</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">is_valid</span><span class="p">:</span>
             <span class="n">channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_trading_channel</span><span class="p">()</span>
             <span class="n">channel</span><span class="o">.</span><span class="n">create_order</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Order is not valid: </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Order is not valid: </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">create_market_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">time_in_force</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.create_market_order"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.create_market_order">[docs]</a>    <span class="k">def</span> <span class="nf">create_market_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">time_in_force</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create market order</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        symbol</span>
+<span class="sd">        side</span>
+<span class="sd">        quantity</span>
+<span class="sd">        time_in_force</span>
+<span class="sd">        order_id</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">order</span> <span class="o">=</span> <span class="n">MarketOrder</span><span class="p">(</span>
             <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
             <span class="n">side</span><span class="o">=</span><span class="n">side</span><span class="p">,</span>
@@ -280,9 +331,20 @@
             <span class="n">time_in_force</span><span class="o">=</span><span class="n">time_in_force</span><span class="p">,</span>
             <span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">create_order</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_order</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">create_limit_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">price</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">time_in_force</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.create_limit_order"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.create_limit_order">[docs]</a>    <span class="k">def</span> <span class="nf">create_limit_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">price</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">time_in_force</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create limit order</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        price</span>
+<span class="sd">        symbol</span>
+<span class="sd">        side</span>
+<span class="sd">        quantity</span>
+<span class="sd">        time_in_force</span>
+<span class="sd">        order_id</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">order</span> <span class="o">=</span> <span class="n">LimitOrder</span><span class="p">(</span>
             <span class="n">price</span><span class="o">=</span><span class="n">price</span><span class="p">,</span>
             <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
@@ -291,15 +353,22 @@
             <span class="n">time_in_force</span><span class="o">=</span><span class="n">time_in_force</span><span class="p">,</span>
             <span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">create_order</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_order</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">cancel_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_id</span><span class="p">):</span>
-        <span class="n">channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_trading_channel</span><span class="p">()</span>
-        <span class="n">channel</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">)</span>
+<div class="viewcode-block" id="BlockchainWebsocketClient.cancel_order"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.cancel_order">[docs]</a>    <span class="k">def</span> <span class="nf">cancel_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Cancel order</span>
 
-    <span class="k">def</span> <span class="nf">cancel_all_orders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        order_id</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_trading_channel</span><span class="p">()</span>
-        <span class="n">channel</span><span class="o">.</span><span class="n">cancel_all_orders</span><span class="p">()</span></div>
+        <span class="n">channel</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BlockchainWebsocketClient.cancel_all_orders"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.client.BlockchainWebsocketClient.html#blockchain_exchange.client.BlockchainWebsocketClient.cancel_all_orders">[docs]</a>    <span class="k">def</span> <span class="nf">cancel_all_orders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Cancel all orders&quot;&quot;&quot;</span>
+        <span class="n">channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_trading_channel</span><span class="p">()</span>
+        <span class="n">channel</span><span class="o">.</span><span class="n">cancel_all_orders</span><span class="p">()</span></div></div>
 </pre></div>
 
           </div>

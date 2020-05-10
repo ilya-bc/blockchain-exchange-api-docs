@@ -80,6 +80,7 @@
     
     
       <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Quick start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../generated_sphinx_gallery/index.html">Gallery of examples</a></li>
 </ul>
@@ -113,6 +114,21 @@
 
 
 <div class="viewcode-block" id="Order"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.orders.Order.html#blockchain_exchange.orders.Order">[docs]</a><span class="k">class</span> <span class="nc">Order</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Base class for representing orders</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        Although it is possible to use this class for creating orders, but</span>
+<span class="sd">        it lack of order specific validation checks.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    order_type</span>
+<span class="sd">    symbol</span>
+<span class="sd">    side</span>
+<span class="sd">    quantity</span>
+<span class="sd">    time_in_force</span>
+<span class="sd">    order_id</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">time_in_force</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">order_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol</span>
@@ -123,10 +139,10 @@
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">class_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
-        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">(</span><span class="si">%s</span><span class="se">\n</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">class_name</span><span class="p">,</span> <span class="n">pretty_print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span>
-                                                        <span class="n">offset</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="p">),)</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">(</span><span class="si">%s</span><span class="se">\n</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">class_name</span><span class="p">,</span> <span class="n">pretty_print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="p">),)</span>
 
-    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<div class="viewcode-block" id="Order.to_json"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.orders.Order.html#blockchain_exchange.orders.Order.to_json">[docs]</a>    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Represent order as JSON dictionary&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;clOrdID&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
             <span class="s2">&quot;symbol&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span>
@@ -134,13 +150,15 @@
             <span class="s2">&quot;timeInForce&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_in_force</span><span class="p">,</span>
             <span class="s2">&quot;side&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span><span class="p">,</span>
             <span class="s2">&quot;orderQty&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span><span class="p">,</span>
-        <span class="p">}</span>
+        <span class="p">}</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Check if order has valid parameters&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="Order.validate"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.orders.Order.html#blockchain_exchange.orders.Order.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Validate order parameters&quot;&quot;&quot;</span>
         <span class="n">is_valid</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>
             <span class="n">is_valid</span> <span class="o">=</span> <span class="kc">False</span>
@@ -169,10 +187,20 @@
             <span class="n">is_valid</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Order &#39;type&#39; is not valid: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">is_valid</span></div>
+        <span class="k">return</span> <span class="n">is_valid</span></div></div>
 
 
 <div class="viewcode-block" id="MarketOrder"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.orders.MarketOrder.html#blockchain_exchange.orders.MarketOrder">[docs]</a><span class="k">class</span> <span class="nc">MarketOrder</span><span class="p">(</span><span class="n">Order</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Representation of **market** order</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    symbol</span>
+<span class="sd">    side</span>
+<span class="sd">    quantity</span>
+<span class="sd">    time_in_force</span>
+<span class="sd">    order_id</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">time_in_force</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">order_type</span><span class="o">=</span><span class="s2">&quot;market&quot;</span><span class="p">,</span>
                          <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
@@ -181,15 +209,25 @@
                          <span class="n">time_in_force</span><span class="o">=</span><span class="n">time_in_force</span><span class="p">,</span>
                          <span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
+<div class="viewcode-block" id="MarketOrder.to_json"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.orders.MarketOrder.html#blockchain_exchange.orders.MarketOrder.to_json">[docs]</a>    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span></div>
-
+<div class="viewcode-block" id="MarketOrder.validate"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.orders.MarketOrder.html#blockchain_exchange.orders.MarketOrder.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span></div></div>
 
 
 <div class="viewcode-block" id="LimitOrder"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.orders.LimitOrder.html#blockchain_exchange.orders.LimitOrder">[docs]</a><span class="k">class</span> <span class="nc">LimitOrder</span><span class="p">(</span><span class="n">Order</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Representation of **limit** order</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    price</span>
+<span class="sd">    symbol</span>
+<span class="sd">    side</span>
+<span class="sd">    quantity</span>
+<span class="sd">    time_in_force</span>
+<span class="sd">    order_id</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">price</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">time_in_force</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">order_type</span><span class="o">=</span><span class="s2">&quot;limit&quot;</span><span class="p">,</span>
                          <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
@@ -199,13 +237,13 @@
                          <span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
 
-    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<div class="viewcode-block" id="LimitOrder.to_json"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.orders.LimitOrder.html#blockchain_exchange.orders.LimitOrder.to_json">[docs]</a>    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="o">**</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_json</span><span class="p">(),</span>
             <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span>
-        <span class="p">}</span>
+        <span class="p">}</span></div>
 
-    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="LimitOrder.validate"><a class="viewcode-back" href="../../api/generated/blockchain_exchange.orders.LimitOrder.html#blockchain_exchange.orders.LimitOrder.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">is_valid</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">is_valid</span><span class="p">:</span>
@@ -214,7 +252,7 @@
                 <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Order &#39;price&#39; is not valid: should be of float type&quot;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Order &#39;price&#39; is not valid: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">is_valid</span></div>
+        <span class="k">return</span> <span class="n">is_valid</span></div></div>
 </pre></div>
 
           </div>

@@ -89,6 +89,7 @@
     
     
       <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Quick start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../blockchain_exchange.client.html">Module for interacting with exchange</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../blockchain_exchange.channels.html">Module for interacting with exchange channels</a></li>
@@ -131,30 +132,57 @@
 <dl class="py class">
 <dt id="blockchain_exchange.channels.AuthChannel">
 <em class="property">class </em><code class="sig-name descname">AuthChannel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ws</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#AuthChannel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.AuthChannel" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Attributes</p>
+<dd><p>Representation of <a class="reference external" href="https://exchange.blockchain.com/api/#authenticated-channels">auth</a> channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd></dd>
+<dt><strong>ws</strong><span class="classifier">BlockchainWebsocket</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Attributes</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 63%" />
-<col style="width: 37%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>extra_message</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><strong>is_subscribed</strong></p></td>
+<td><p>(bool)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>api_secret</strong></p></td>
+<td><p>(str)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>is_authenticated</strong></p></td>
+<td><p>(bool)</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
-<table class="docutils align-default">
+<table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 62%" />
-<col style="width: 38%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>on_subscribe</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.channels.AuthChannel.on_subscribe" title="blockchain_exchange.channels.AuthChannel.on_subscribe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_subscribe</span></code></a>(self)</p></td>
+<td><p>Perform action upon <strong>subscribe</strong> event message received from server</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt id="blockchain_exchange.channels.AuthChannel.extra_message">
+<em class="property">property </em><code class="sig-name descname">extra_message</code><a class="headerlink" href="#blockchain_exchange.channels.AuthChannel.extra_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Additional message to be send to server</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.channels.AuthChannel.on_subscribe">
+<code class="sig-name descname">on_subscribe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#AuthChannel.on_subscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.AuthChannel.on_subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform action upon <strong>subscribe</strong> event message received from server</p>
+</dd></dl>
+
 </dd></dl>
 
 <div class="clearer"></div></div>

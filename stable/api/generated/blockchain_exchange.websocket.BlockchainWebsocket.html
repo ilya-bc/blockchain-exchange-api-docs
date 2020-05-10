@@ -89,6 +89,7 @@
     
     
       <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Quick start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../blockchain_exchange.client.html">Module for interacting with exchange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../blockchain_exchange.channels.html">Module for interacting with exchange channels</a></li>
@@ -131,54 +132,129 @@
 <dl class="py class">
 <dt id="blockchain_exchange.websocket.BlockchainWebsocket">
 <em class="property">class </em><code class="sig-name descname">BlockchainWebsocket</code><a class="reference internal" href="../../_modules/blockchain_exchange/websocket.html#BlockchainWebsocket"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Attributes</p>
-<table class="docutils align-default">
+<dd><p>Low level API to interact with Blockchain Exchange</p>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 75%" />
-<col style="width: 25%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>ws</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.websocket.BlockchainWebsocket.ws" title="blockchain_exchange.websocket.BlockchainWebsocket.ws"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ws</span></code></a></p></td>
+<td><p>Connection to blockchain exchange websocket</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>ws_connect_headers</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#blockchain_exchange.websocket.BlockchainWebsocket.ws_connect_headers" title="blockchain_exchange.websocket.BlockchainWebsocket.ws_connect_headers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ws_connect_headers</span></code></a></p></td>
+<td><p>List of additional headers sent to blockchain exchange</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>ws_connect_timeout_seconds</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.websocket.BlockchainWebsocket.ws_connect_timeout_seconds" title="blockchain_exchange.websocket.BlockchainWebsocket.ws_connect_timeout_seconds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ws_connect_timeout_seconds</span></code></a></p></td>
+<td><p>Wait for socket to connect before dropping connection</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>ws_origin</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#blockchain_exchange.websocket.BlockchainWebsocket.ws_origin" title="blockchain_exchange.websocket.BlockchainWebsocket.ws_origin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ws_origin</span></code></a></p></td>
+<td><p>Blockchain exchange websocket origin</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>ws_uri</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.websocket.BlockchainWebsocket.ws_uri" title="blockchain_exchange.websocket.BlockchainWebsocket.ws_uri"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ws_uri</span></code></a></p></td>
+<td><p>URI of blockchain exchange websocket</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
-<table class="docutils align-default">
+<table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 72%" />
-<col style="width: 28%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>connect</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.websocket.BlockchainWebsocket.connect" title="blockchain_exchange.websocket.BlockchainWebsocket.connect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connect</span></code></a>(self)</p></td>
+<td><p>Connect to blockchain exchange websocket</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>reconnect</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#blockchain_exchange.websocket.BlockchainWebsocket.reconnect" title="blockchain_exchange.websocket.BlockchainWebsocket.reconnect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reconnect</span></code></a>(self)</p></td>
+<td><p>Reconnect to blockchain exchange websocket</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>send</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.websocket.BlockchainWebsocket.send" title="blockchain_exchange.websocket.BlockchainWebsocket.send"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send</span></code></a>(self, message)</p></td>
+<td><p>Send raw string message to blockchain exchange</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>send_json</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#blockchain_exchange.websocket.BlockchainWebsocket.send_json" title="blockchain_exchange.websocket.BlockchainWebsocket.send_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_json</span></code></a>(self, message)</p></td>
+<td><p>Send message represented as python dictionary to blockchain exchange</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>set_ws_message_handler</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.websocket.BlockchainWebsocket.set_ws_message_handler" title="blockchain_exchange.websocket.BlockchainWebsocket.set_ws_message_handler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ws_message_handler</span></code></a>(self, handler)</p></td>
+<td><p>Set method responsible for handling messages received from blockchain exchange</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt id="blockchain_exchange.websocket.BlockchainWebsocket.connect">
+<code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/blockchain_exchange/websocket.html#BlockchainWebsocket.connect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to blockchain exchange websocket</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.websocket.BlockchainWebsocket.reconnect">
+<code class="sig-name descname">reconnect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/blockchain_exchange/websocket.html#BlockchainWebsocket.reconnect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket.reconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reconnect to blockchain exchange websocket</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.websocket.BlockchainWebsocket.send">
+<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/blockchain_exchange/websocket.html#BlockchainWebsocket.send"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send raw string message to blockchain exchange</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>message</strong><span class="classifier">str</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.websocket.BlockchainWebsocket.send_json">
+<code class="sig-name descname">send_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/blockchain_exchange/websocket.html#BlockchainWebsocket.send_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket.send_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send message represented as python dictionary to blockchain exchange</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>message</strong><span class="classifier">Dict</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.websocket.BlockchainWebsocket.set_ws_message_handler">
+<code class="sig-name descname">set_ws_message_handler</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handler: &lt;built-in function callable&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/websocket.html#BlockchainWebsocket.set_ws_message_handler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket.set_ws_message_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set method responsible for handling messages received from blockchain exchange</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.websocket.BlockchainWebsocket.ws">
+<em class="property">property </em><code class="sig-name descname">ws</code><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket.ws" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connection to blockchain exchange websocket</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.websocket.BlockchainWebsocket.ws_connect_headers">
+<em class="property">property </em><code class="sig-name descname">ws_connect_headers</code><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket.ws_connect_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of additional headers sent to blockchain exchange</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.websocket.BlockchainWebsocket.ws_connect_timeout_seconds">
+<em class="property">property </em><code class="sig-name descname">ws_connect_timeout_seconds</code><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket.ws_connect_timeout_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for socket to connect before dropping connection</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.websocket.BlockchainWebsocket.ws_origin">
+<em class="property">property </em><code class="sig-name descname">ws_origin</code><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket.ws_origin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Blockchain exchange websocket origin</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.websocket.BlockchainWebsocket.ws_uri">
+<em class="property">property </em><code class="sig-name descname">ws_uri</code><a class="headerlink" href="#blockchain_exchange.websocket.BlockchainWebsocket.ws_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of blockchain exchange websocket</p>
+</dd></dl>
+
 </dd></dl>
 
 <div class="clearer"></div></div>

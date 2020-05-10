@@ -89,6 +89,7 @@
     
     
       <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Quick start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../blockchain_exchange.client.html">Module for interacting with exchange</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../blockchain_exchange.channels.html">Module for interacting with exchange channels</a></li>
@@ -131,33 +132,52 @@
 <dl class="py class">
 <dt id="blockchain_exchange.manager.ChannelManager">
 <em class="property">class </em><code class="sig-name descname">ChannelManager</code><a class="reference internal" href="../../_modules/blockchain_exchange/manager.html#ChannelManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.manager.ChannelManager" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Attributes</p>
-<table class="docutils align-default">
+<dd><p>Class to manage connections to blockchain exchange channels</p>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 73%" />
-<col style="width: 27%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>available_channel_names</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.manager.ChannelManager.available_channel_names" title="blockchain_exchange.manager.ChannelManager.available_channel_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">available_channel_names</span></code></a></p></td>
+<td><p>List of channel names this manager is responsible for</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
-<table class="docutils align-default">
+<table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>get_all_channels</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.manager.ChannelManager.get_all_channels" title="blockchain_exchange.manager.ChannelManager.get_all_channels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_channels</span></code></a>(self)</p></td>
+<td><p>Get list of all opened connections to channels</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>get_channel</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#blockchain_exchange.manager.ChannelManager.get_channel" title="blockchain_exchange.manager.ChannelManager.get_channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_channel</span></code></a>(self, name, \*\*kwargs)</p></td>
+<td><p>Get connection to a channel of interest</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt id="blockchain_exchange.manager.ChannelManager.available_channel_names">
+<em class="property">property </em><code class="sig-name descname">available_channel_names</code><a class="headerlink" href="#blockchain_exchange.manager.ChannelManager.available_channel_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of channel names this manager is responsible for</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.manager.ChannelManager.get_all_channels">
+<code class="sig-name descname">get_all_channels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="blockchain_exchange.channels.Channel.html#blockchain_exchange.channels.Channel" title="blockchain_exchange.channels.Channel">blockchain_exchange.channels.Channel</a><span class="p">]</span><a class="reference internal" href="../../_modules/blockchain_exchange/manager.html#ChannelManager.get_all_channels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.manager.ChannelManager.get_all_channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of all opened connections to channels</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.manager.ChannelManager.get_channel">
+<code class="sig-name descname">get_channel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em>, <em class="sig-param">\*\*kwargs</em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="blockchain_exchange.channels.Channel.html#blockchain_exchange.channels.Channel" title="blockchain_exchange.channels.Channel">blockchain_exchange.channels.Channel</a><a class="reference internal" href="../../_modules/blockchain_exchange/manager.html#ChannelManager.get_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.manager.ChannelManager.get_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get connection to a channel of interest</p>
+</dd></dl>
+
 </dd></dl>
 
 <div class="clearer"></div></div>

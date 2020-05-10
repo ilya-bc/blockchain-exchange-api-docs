@@ -89,6 +89,7 @@
     
     
       <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Quick start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../blockchain_exchange.client.html">Module for interacting with exchange</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../blockchain_exchange.channels.html">Module for interacting with exchange channels</a></li>
@@ -131,51 +132,135 @@
 <dl class="py class">
 <dt id="blockchain_exchange.channels.Channel">
 <em class="property">class </em><code class="sig-name descname">Channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">ws</span><span class="p">:</span> <span class="n"><a class="reference internal" href="blockchain_exchange.websocket.BlockchainWebsocket.html#blockchain_exchange.websocket.BlockchainWebsocket" title="blockchain_exchange.websocket.BlockchainWebsocket">blockchain_exchange.websocket.BlockchainWebsocket</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#Channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.Channel" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Attributes</p>
-<table class="docutils align-default">
+<dd><p>Base class for all channels</p>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 63%" />
-<col style="width: 37%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>extra_message</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.channels.Channel.extra_message" title="blockchain_exchange.channels.Channel.extra_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extra_message</span></code></a></p></td>
+<td><p>Additional message to be send to server</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
-<table class="docutils align-default">
+<table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 64%" />
-<col style="width: 36%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>on_event</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.channels.Channel.on_event" title="blockchain_exchange.channels.Channel.on_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_event</span></code></a>(self, event_type, event_response)</p></td>
+<td><p>Perform action based on event type received from server</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>on_reject</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#blockchain_exchange.channels.Channel.on_reject" title="blockchain_exchange.channels.Channel.on_reject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_reject</span></code></a>(self, event_response)</p></td>
+<td><p>Perform action upon <strong>reject</strong> event message received from server</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>on_snapshot</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.channels.Channel.on_snapshot" title="blockchain_exchange.channels.Channel.on_snapshot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_snapshot</span></code></a>(self, event_response)</p></td>
+<td><p>Perform action upon <strong>snapshot</strong> event message received from server</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>on_subscribe</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#blockchain_exchange.channels.Channel.on_subscribe" title="blockchain_exchange.channels.Channel.on_subscribe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_subscribe</span></code></a>(self)</p></td>
+<td><p>Perform action upon <strong>subscribe</strong> event message received from server</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>on_unsubscribe</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.channels.Channel.on_unsubscribe" title="blockchain_exchange.channels.Channel.on_unsubscribe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_unsubscribe</span></code></a>(self)</p></td>
+<td><p>Perform action upon <strong>unsubscribe</strong> event message received from server</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>on_update</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#blockchain_exchange.channels.Channel.on_update" title="blockchain_exchange.channels.Channel.on_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_update</span></code></a>(self, event_response)</p></td>
+<td><p>Perform action upon <strong>update</strong> event message received from server</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>subscribe</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.channels.Channel.subscribe" title="blockchain_exchange.channels.Channel.subscribe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subscribe</span></code></a>(self)</p></td>
+<td><p>Subscribe to a channel</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>unsubscribe</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#blockchain_exchange.channels.Channel.unsubscribe" title="blockchain_exchange.channels.Channel.unsubscribe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unsubscribe</span></code></a>(self)</p></td>
+<td><p>Unsubscribe from a channel</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt id="blockchain_exchange.channels.Channel.extra_message">
+<em class="property">property </em><code class="sig-name descname">extra_message</code><a class="headerlink" href="#blockchain_exchange.channels.Channel.extra_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Additional message to be send to server</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.channels.Channel.on_event">
+<code class="sig-name descname">on_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">event_type</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">event_response</span><span class="p">:</span> <span class="n">Dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#Channel.on_event"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.Channel.on_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform action based on event type received from server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event_type</strong><span class="classifier">str</span></dt><dd></dd>
+<dt><strong>event_response</strong><span class="classifier">Dict</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.channels.Channel.on_reject">
+<code class="sig-name descname">on_reject</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">event_response</span><span class="p">:</span> <span class="n">Dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#Channel.on_reject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.Channel.on_reject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform action upon <strong>reject</strong> event message received from server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event_response</strong><span class="classifier">Dict</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.channels.Channel.on_snapshot">
+<code class="sig-name descname">on_snapshot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">event_response</span><span class="p">:</span> <span class="n">Dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#Channel.on_snapshot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.Channel.on_snapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform action upon <strong>snapshot</strong> event message received from server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event_response</strong><span class="classifier">Dict</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.channels.Channel.on_subscribe">
+<code class="sig-name descname">on_subscribe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#Channel.on_subscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.Channel.on_subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform action upon <strong>subscribe</strong> event message received from server</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.channels.Channel.on_unsubscribe">
+<code class="sig-name descname">on_unsubscribe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#Channel.on_unsubscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.Channel.on_unsubscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform action upon <strong>unsubscribe</strong> event message received from server</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.channels.Channel.on_update">
+<code class="sig-name descname">on_update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">event_response</span><span class="p">:</span> <span class="n">Dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#Channel.on_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.Channel.on_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform action upon <strong>update</strong> event message received from server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event_response</strong><span class="classifier">Dict</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.channels.Channel.subscribe">
+<code class="sig-name descname">subscribe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#Channel.subscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.Channel.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to a channel</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.channels.Channel.unsubscribe">
+<code class="sig-name descname">unsubscribe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#Channel.unsubscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.Channel.unsubscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unsubscribe from a channel</p>
+</dd></dl>
+
 </dd></dl>
 
 <div class="clearer"></div></div>

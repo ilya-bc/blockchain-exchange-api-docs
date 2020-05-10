@@ -89,6 +89,7 @@
     
     
       <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Quick start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../blockchain_exchange.client.html">Module for interacting with exchange</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../blockchain_exchange.channels.html">Module for interacting with exchange channels</a></li>
@@ -131,18 +132,51 @@
 <dl class="py class">
 <dt id="blockchain_exchange.channels.ChannelFactory">
 <em class="property">class </em><code class="sig-name descname">ChannelFactory</code><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#ChannelFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.ChannelFactory" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Methods</p>
+<dd><p>Class to create any channel</p>
+<p class="rubric">Attributes</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 64%" />
-<col style="width: 36%" />
+<col style="width: 38%" />
+<col style="width: 63%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>create_channel</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><strong>channels</strong></p></td>
+<td><p>(Dict[str, Channel])</p></td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.channels.ChannelFactory.create_channel" title="blockchain_exchange.channels.ChannelFactory.create_channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_channel</span></code></a>(self, name, ws, \*\*kwargs)</p></td>
+<td><p>Create channel</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="blockchain_exchange.channels.ChannelFactory.create_channel">
+<code class="sig-name descname">create_channel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em>, <em class="sig-param">ws</em>, <em class="sig-param">\*\*kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#ChannelFactory.create_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.ChannelFactory.create_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd></dd>
+<dt><strong>ws</strong><span class="classifier">BlockchainWebsocket</span></dt><dd></dd>
+<dt><strong>kwargs</strong><span class="classifier">dict</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Channel</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <div class="clearer"></div></div>

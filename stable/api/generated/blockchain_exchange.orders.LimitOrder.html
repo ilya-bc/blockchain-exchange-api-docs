@@ -89,6 +89,7 @@
     
     
       <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Quick start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../blockchain_exchange.client.html">Module for interacting with exchange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../blockchain_exchange.channels.html">Module for interacting with exchange channels</a></li>
@@ -131,21 +132,46 @@
 <dl class="py class">
 <dt id="blockchain_exchange.orders.LimitOrder">
 <em class="property">class </em><code class="sig-name descname">LimitOrder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">price</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">symbol</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">side</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">quantity</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">time_in_force</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">order_id</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/orders.html#LimitOrder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.orders.LimitOrder" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Methods</p>
-<table class="docutils align-default">
+<dd><p>Representation of <strong>limit</strong> order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>price</strong></dt><dd></dd>
+<dt><strong>symbol</strong></dt><dd></dd>
+<dt><strong>side</strong></dt><dd></dd>
+<dt><strong>quantity</strong></dt><dd></dd>
+<dt><strong>time_in_force</strong></dt><dd></dd>
+<dt><strong>order_id</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 55%" />
-<col style="width: 45%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>to_json</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.orders.LimitOrder.to_json" title="blockchain_exchange.orders.LimitOrder.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>(self)</p></td>
+<td><p>Represent order as JSON dictionary</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>validate</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#blockchain_exchange.orders.LimitOrder.validate" title="blockchain_exchange.orders.LimitOrder.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a>(self)</p></td>
+<td><p>Validate order parameters</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt id="blockchain_exchange.orders.LimitOrder.to_json">
+<code class="sig-name descname">to_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="../../_modules/blockchain_exchange/orders.html#LimitOrder.to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.orders.LimitOrder.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent order as JSON dictionary</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.orders.LimitOrder.validate">
+<code class="sig-name descname">validate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../../_modules/blockchain_exchange/orders.html#LimitOrder.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.orders.LimitOrder.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate order parameters</p>
+</dd></dl>
+
 </dd></dl>
 
 <div class="clearer"></div></div>

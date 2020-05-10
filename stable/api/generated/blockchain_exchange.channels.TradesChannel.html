@@ -89,6 +89,7 @@
     
     
       <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Quick start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../blockchain_exchange.client.html">Module for interacting with exchange</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../blockchain_exchange.channels.html">Module for interacting with exchange channels</a></li>
@@ -131,30 +132,62 @@
 <dl class="py class">
 <dt id="blockchain_exchange.channels.TradesChannel">
 <em class="property">class </em><code class="sig-name descname">TradesChannel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="n">ws</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#TradesChannel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.TradesChannel" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Attributes</p>
+<dd><p>Representation of <a class="reference external" href="https://exchange.blockchain.com/api/#trades">trades</a> channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>symbol</strong><span class="classifier">str</span></dt><dd></dd>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd></dd>
+<dt><strong>ws</strong><span class="classifier">BlockchainWebsocket</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Attributes</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 63%" />
 <col style="width: 37%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>extra_message</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><strong>is_subscribed</strong></p></td>
+<td><p>(bool)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>updates</strong></p></td>
+<td><p>(List)</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
-<table class="docutils align-default">
+<table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 57%" />
-<col style="width: 43%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>on_update</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#blockchain_exchange.channels.TradesChannel.on_update" title="blockchain_exchange.channels.TradesChannel.on_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_update</span></code></a>(self, event_response)</p></td>
+<td><p>Perform action upon <strong>update</strong> event message received from server</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt id="blockchain_exchange.channels.TradesChannel.extra_message">
+<em class="property">property </em><code class="sig-name descname">extra_message</code><a class="headerlink" href="#blockchain_exchange.channels.TradesChannel.extra_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Additional message to be send to server</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="blockchain_exchange.channels.TradesChannel.on_update">
+<code class="sig-name descname">on_update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">event_response</span><span class="p">:</span> <span class="n">Dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/blockchain_exchange/channels.html#TradesChannel.on_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#blockchain_exchange.channels.TradesChannel.on_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform action upon <strong>update</strong> event message received from server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event_response</strong><span class="classifier">Dict</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <div class="clearer"></div></div>
